@@ -33,7 +33,7 @@ namespace BikeStore.Data
                     dbEntry.Name = product.Name;
                     dbEntry.Description = product.Description;
                     dbEntry.Price = product.Price;
-                    dbEntry.Category = product.Category;
+                    dbEntry.CategoryFK = product.CategoryFK;
                 }
             }
             context.SaveChanges();

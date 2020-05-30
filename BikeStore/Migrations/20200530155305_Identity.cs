@@ -8,27 +8,6 @@ namespace BikeStore.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<string>(
-                name: "Name",
-                table: "Products",
-                nullable: false,
-                oldClrType: typeof(string),
-                oldNullable: true);
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Description",
-                table: "Products",
-                nullable: false,
-                oldClrType: typeof(string),
-                oldNullable: true);
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Category",
-                table: "Products",
-                nullable: false,
-                oldClrType: typeof(string),
-                oldNullable: true);
-
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -66,6 +45,36 @@ namespace BikeStore.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Categories",
+                columns: table => new
+                {
+                    CategoryID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Categories", x => x.CategoryID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Products",
+                columns: table => new
+                {
+                    ProductID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: false),
+                    Price = table.Column<decimal>(nullable: false),
+                    CategoryFK = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Products", x => x.ProductID);
                 });
 
             migrationBuilder.CreateTable(
@@ -114,8 +123,8 @@ namespace BikeStore.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
-                    ProviderKey = table.Column<string>(maxLength: 128, nullable: false),
+                    LoginProvider = table.Column<string>(nullable: false),
+                    ProviderKey = table.Column<string>(nullable: false),
                     ProviderDisplayName = table.Column<string>(nullable: true),
                     UserId = table.Column<string>(nullable: false)
                 },
@@ -159,8 +168,8 @@ namespace BikeStore.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(nullable: false),
-                    LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
-                    Name = table.Column<string>(maxLength: 128, nullable: false),
+                    LoginProvider = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
                     Value = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -232,28 +241,16 @@ namespace BikeStore.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "Products");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Name",
-                table: "Products",
-                nullable: true,
-                oldClrType: typeof(string));
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Description",
-                table: "Products",
-                nullable: true,
-                oldClrType: typeof(string));
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Category",
-                table: "Products",
-                nullable: true,
-                oldClrType: typeof(string));
         }
     }
 }

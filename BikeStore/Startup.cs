@@ -37,6 +37,7 @@ namespace BikeStore
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddTransient<IProductRepository, EFProductRepository>();
+            services.AddTransient<ICategoryRepository, EFCategoryRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -64,7 +65,16 @@ namespace BikeStore
             {
                 routes.MapRoute(
                     name: "default",
+                    template: "{controller=Home}/{action=Index}");
+                routes.MapRoute(
+                   name: "Home",
+                   template: "{controller=Default}/{action=Index}");
+                routes.MapRoute(
+                    name: "Product",
                     template: "{controller=Product}/{action=List}/{id?}");
+                routes.MapRoute(
+                    name: "Category",
+                    template: "{controller=Category}/{action=List}/{id?}");
             });
         }
     }
