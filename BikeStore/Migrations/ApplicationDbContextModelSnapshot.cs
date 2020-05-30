@@ -184,7 +184,7 @@ namespace BikeStore.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("MVCStore.Models.Product", b =>
+            modelBuilder.Entity("BikeStore.Models.Product", b =>
                 {
                     b.Property<int>("ProductID")
                         .ValueGeneratedOnAdd()
