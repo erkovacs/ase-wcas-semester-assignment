@@ -2,13 +2,6 @@
 @{
     ViewBag.Title = "Edit Product";
     Layout = "_AdminLayout";
-
-
-    // TODO:: do not manually input "CategoryFK, it does not make sense
-    // Rather associate a hidden field and let the user select human 
-    // readable categories
-    ViewBag.Categories = new List<Category>();
-    ViewBag.Categories.Add(new Category { CategoryID=100, Name="Test", Description="Test" });
 }
 
 <h1>Edit product</h1>
@@ -27,12 +20,12 @@
     </div>
     <div class="form-group">
         <label>Category</label>
-        <div><span asp-validation-for="CategoryFK" class="text-danger"></span></div>
-        <select asp-for="CategoryFK" class="form-control">
+        <div><span asp-validation-for="CategoryID" class="text-danger"></span></div>
+        <select asp-for="CategoryID" class="form-control">
             <option value="0">--- none ---</option>
             @foreach (var c in ViewBag.Categories)
             {
-                <option value="c.CategoryID">@c.Name</option>
+                <option value="@c.CategoryID">@c.Name</option>
             }
         </select>
     </div>

@@ -13,5 +13,6 @@ namespace BikeStore.Models
         public string Name { get; set; }
         [Required(ErrorMessage = "Please enter a category description")]
         public string Description { get; set; }
+        public ICollection<Product> Products { get; set; }
     }
 }

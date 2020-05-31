@@ -9,34 +9,48 @@ namespace BikeStore.Data
 {
     public static class IdentitySeedData
     {
-        private const string adminEmail = "admin@test.com";
-        private const string adminPassword = "Secret123$";
+        private const string defaultPassword = "$Testpassword1234";
+
         public static async Task Initialize(IServiceProvider serviceProvider)
         {
             using (var userManager = serviceProvider
                 .GetRequiredService<UserManager<IdentityUser>>())
             {
-                IdentityUser user = await userManager.FindByEmailAsync(adminEmail);
 
-                if (user == null)
+                // Create roles
+                var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+                List<string> roles = new List<string> { "ProductReadOnly", "ProductManagement" };
+                foreach (string role in roles)
                 {
-                    user = new IdentityUser { UserName = adminEmail, Email = adminEmail };
-                    var result = await userManager.CreateAsync(user, adminPassword);
+                    if (!await roleManager.RoleExistsAsync(role))
+                    {
+                        await roleManager.CreateAsync(new IdentityRole(role));
+                    }
                 }
 
-                var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-
-                var roleName = "ProductManagement";
-                if (!await roleManager.RoleExistsAsync(roleName))
-                    await roleManager.CreateAsync(new IdentityRole(roleName));
-
-                var adminWithRoleEmail = "adminRole2@test.com";
-                IdentityUser adminWithRole = await userManager.FindByEmailAsync(adminWithRoleEmail);
-                if (adminWithRole == null)
+                List<IdentityUser> admins = new List<IdentityUser> {
+                    new IdentityUser { UserName = "viewerAdmin@admin.com", Email = "viewerAdmin@admin.com" },
+                    new IdentityUser { UserName = "editorAdmin@admin.com", Email = "editorAdmin@admin.com" },
+                };
+                foreach (IdentityUser admin in admins)
                 {
-                    adminWithRole = new IdentityUser { UserName = adminWithRoleEmail, Email = adminWithRoleEmail };
-                    await userManager.CreateAsync(adminWithRole, adminPassword);
-                    await userManager.AddToRoleAsync(adminWithRole, roleName);
+                    if (null == await userManager.FindByEmailAsync(admin.Email))
+                    {
+                        var res = await userManager.CreateAsync(admin, defaultPassword);
+                        string role = null;
+                        if (admin.Email.StartsWith("viewer"))
+                        {
+                            role = roles[0];
+                        }
+                        else if (admin.Email.StartsWith("editor"))
+                        {
+                            role = roles[1];
+                        }
+                        if (null != role)
+                        {
+                            await userManager.AddToRoleAsync(admin, role);
+                        }
+                    }
                 }
             }
         }

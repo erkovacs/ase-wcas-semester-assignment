@@ -6,6 +6,27 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200530155305_Identity.cs" />
+    <Compile Remove="Migrations\20200530155305_Identity.Designer.cs" />
+    <Compile Remove="Migrations\20200531080029_BikeStore.cs" />
+    <Compile Remove="Migrations\20200531080029_BikeStore.Designer.cs" />
+    <Compile Remove="Migrations\20200531080438_Identity.cs" />
+    <Compile Remove="Migrations\20200531080438_Identity.Designer.cs" />
+    <Compile Remove="Migrations\20200531080532_BikeStore.cs" />
+    <Compile Remove="Migrations\20200531080532_BikeStore.Designer.cs" />
+    <Compile Remove="Migrations\20200531080924_BikeStore2.cs" />
+    <Compile Remove="Migrations\20200531080924_BikeStore2.Designer.cs" />
+    <Compile Remove="Migrations\20200531081120_BikeStore.cs" />
+    <Compile Remove="Migrations\20200531081120_BikeStore.Designer.cs" />
+    <Compile Remove="Migrations\20200531081211_BikeStore.cs" />
+    <Compile Remove="Migrations\20200531081211_BikeStore.Designer.cs" />
+    <Compile Remove="Migrations\20200531081812_BikeStore.cs" />
+    <Compile Remove="Migrations\20200531081812_BikeStore.Designer.cs" />
+    <Compile Remove="Migrations\20200531082009_BikeStore.cs" />
+    <Compile Remove="Migrations\20200531082009_BikeStore.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Areas\Identity\Services\" />
   </ItemGroup>
 

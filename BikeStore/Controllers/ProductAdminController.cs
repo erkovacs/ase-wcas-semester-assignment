@@ -11,25 +11,31 @@ namespace BikeStore.Controllers
     [Authorize]
     public class ProductAdminController : Controller
     {
-        private IProductRepository repository;
-        public ProductAdminController(IProductRepository repo)
+        private ICategoryProductRepository repository;
+        private IQueryable<Category> categories;
+
+        public ProductAdminController(ICategoryProductRepository repo)
         {
             repository = repo;
+            categories = repository.GetCategories();
         }
+        
         public IActionResult Index()
         {
-            return View(repository.Products);
+            return View(repository.GetProducts());
         }
 
         [Authorize(Roles = "ProductManagement")]
         public IActionResult Edit(int productId)
         {
-            return View(repository.Products.FirstOrDefault(p => p.ProductID == productId));
+            ViewBag.Categories = categories;
+            return View(repository.GetProducts().FirstOrDefault(p => p.ProductID == productId));
         }
 
         [HttpPost]
         public IActionResult Edit(Product product)
         {
+            ViewBag.Categories = categories;
             if (ModelState.IsValid)
             {
                 repository.SaveProduct(product);
@@ -45,6 +51,7 @@ namespace BikeStore.Controllers
 
         public IActionResult Create()
         {
+            ViewBag.Categories = categories;
             return View("Edit", new Product());
         }
 

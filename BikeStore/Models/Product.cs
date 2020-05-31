@@ -20,6 +20,7 @@ namespace BikeStore.Models
         public decimal Price { get; set; }
         [ForeignKey("Category")]
         [Required(ErrorMessage = "Please specify a category")]
-        public int CategoryFK { get; set; }
+        public int CategoryID { get; set; }
+        public Category Category { get; set; }
     }
 }

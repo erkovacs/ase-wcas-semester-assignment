@@ -4,13 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BikeStore.Models;
+using BikeStore.Data;
 
 namespace BikeStore.Controllers
 {
     public class CategoryController : Controller
     {
-        private ICategoryRepository repository;
-        public CategoryController(ICategoryRepository repo)
+        private ICategoryProductRepository repository;
+        public CategoryController(ICategoryProductRepository repo)
         {
             repository = repo;
         }
@@ -22,7 +23,7 @@ namespace BikeStore.Controllers
 
         public IActionResult List()
         {
-            return View(repository.Categories);
+            return View(repository.GetCategories());
         }
 
         public IActionResult Products(int id) {

@@ -65,56 +65,56 @@ namespace BikeStore.Data
                 {
                     Name = "Cross XC Bike 29''",
                     Description = "Entry level XC Bike",
-                    CategoryFK = 1,
+                    CategoryID = 1,
                     Price = 500.0m
                 },
                 new Product
                 {
                     Name = "Merida Trail Bike",
                     Description = "Intermediate trail bike with excellent fork",
-                    CategoryFK = 2,
+                    CategoryID = 2,
                     Price = 900.0m
                 },
                 new Product
                 {
                     Name = "Bike seat",
                     Description = "Seat for a bike",
-                    CategoryFK = 6,
+                    CategoryID = 6,
                     Price = 35.0m
                 },
                 new Product
                 {
                     Name = "Bike light",
                     Description = "Bike light for nocturnal or city riding",
-                    CategoryFK = 6,
+                    CategoryID = 6,
                     Price = 50.0m
                 },
                 new Product
                 {
                     Name = "Ghost all-mountain bike 27.5''",
                     Description = "Advanced AM Bike with 140mm of travel",
-                    CategoryFK = 3,
+                    CategoryID = 3,
                     Price = 2500.0m
                 },
                 new Product
                 {
                     Name = "UMF Dirt bike",
                     Description = "Tough and relatively cheap dirt jump bike",
-                    CategoryFK = 4,
+                    CategoryID = 4,
                     Price = 735.0m
                 },
                 new Product
                 {
                     Name = "Bike chain",
                     Description = "Transmits power from the crankcase to the rear wheel",
-                    CategoryFK = 6,
+                    CategoryID = 6,
                     Price = 25.0m
                 },
                 new Product
                 {
                     Name = "Specialized DH Bike 29''",
                     Description = "The best DH bike there is",
-                    CategoryFK = 5,
+                    CategoryID = 5,
                     Price = 5500m
                 }
             );

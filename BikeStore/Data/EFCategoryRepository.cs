@@ -50,10 +50,5 @@ namespace BikeStore.Data
 
             return dbEntry;
         }
-
-        // This is what a good colleague once called "facut ca la tara"
-        public IQueryable<Product> GetProductsInCategory(int categoryID) {
-            return context.Products.Where(x => x.CategoryFK == categoryID);
-        }
     }
 }

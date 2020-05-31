@@ -42,7 +42,7 @@ namespace BikeStore.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CategoryFK");
+                    b.Property<int>("CategoryID");
 
                     b.Property<string>("Description")
                         .IsRequired();
@@ -53,6 +53,8 @@ namespace BikeStore.Migrations
                     b.Property<decimal>("Price");
 
                     b.HasKey("ProductID");
+
+                    b.HasIndex("CategoryID");
 
                     b.ToTable("Products");
                 });
@@ -216,6 +218,14 @@ namespace BikeStore.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("BikeStore.Models.Product", b =>
+                {
+                    b.HasOne("BikeStore.Models.Category", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
