@@ -60,3 +60,6 @@ Use the demo credentials provided to access the admin area (a link will automati
 ## Acknowledgements
 - Used [the documentation in this repo](https://github.com/liviucotfas/ase-web-and-cloud-applications-security) as a guide
 - Used [this article](https://docs.microsoft.com/en-us/aspnet/core/tutorials/publish-to-azure-webapp-using-vs?view=aspnetcore-3.1) when deploying to Azure
+
+## Repo
+- See https://github.com/erkovacs/ase-wcas-semester-assignment for more information
