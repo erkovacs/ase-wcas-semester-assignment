@@ -28,23 +28,25 @@ Note: requirements are marked as complete/incomplete using the following md conv
 - [x] your forms should be protected against Cross-Site Request Forgery (CSRF) attacks;
 
 ### Bonus
-- [ ] deploy your application on Microsoft Azure (or on any other cloud computing platform). Note: please specify the address and provide a user account for accessing the application.
+- [x] deploy your application on Microsoft Azure (or on any other cloud computing platform). Note: please specify the address and provide a user account for accessing the application.
 
 ###  Project Submission
 - file upload: upload an archive with your project
 - inline text: specify the requirements that you have implemented and the degree of completion (you can copy & paste from above)
 
-## Setup
+## Local Setup
 1. Open ```BikeStore.sln``` in Visual Studio
-2. In SQL Server Object Explorer create new Database ```BikeStore```. You might also need to update the connection string in ```appsettings.json```
+2. In SQL Server Object Explorer create new Database ```BikeStore```. You might also need to update the connection string in ```appsettings.json``` to match your local MSSQL server
 3. Open Package Manager Console (Tools > NuGet Package Manager > Package Manager Console) and run ```Update-Database``` to run the default migration included
 4. Hit ctrl-f5 to run
+5. Use the credentials provided below to log in
 
 ## Azure setup
-1. TODO
+1. Visit the app at [MS Azure](https://bikestore20200531134758.azurewebsites.net/)
+2. Use the credentials provided below to log in
 
 ## Basic use
-A basic (unauthenticated) user can navigate through Products and Categories. From categories they can see all products in a category. They are unable to add users or enter the backend.
+A basic (unauthenticated) user can navigate through Products and Categories. From Categories they can see all products in a category. They are unable to add users or enter the backend.
 
 ## Advanced use
 There are 2 admin levels for authenticated users:
@@ -54,3 +56,7 @@ There are 2 admin levels for authenticated users:
 Use the demo credentials provided to access the admin area (a link will automatically appear on navbar upon logging in):
 1. Read-only access: ```viewerAdmin@admin.com``` ```$Testpassword1234```
 2. Full access: ```editorAdmin@admin.com``` ```$Testpassword1234```
+
+## Acknowledgements
+- Used [the documentation in this repo](https://github.com/liviucotfas/ase-web-and-cloud-applications-security) as a guide
+- Used [this article](https://docs.microsoft.com/en-us/aspnet/core/tutorials/publish-to-azure-webapp-using-vs?view=aspnetcore-3.1) when deploying to Azure

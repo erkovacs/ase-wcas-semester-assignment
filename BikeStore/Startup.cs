@@ -27,9 +27,14 @@ namespace BikeStore
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            // Try to get the azure conn string or revert to the default one (local)
+            var connString = Environment.GetEnvironmentVariable("SQLAZURECONNSTR_AzureConnection");
+            if (connString == null)
+            {
+                connString = Configuration.GetConnectionString("DefaultConnection");
+            }
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(connString));
 
             services.AddIdentity<IdentityUser, IdentityRole>(options => {
                 // lock users out for 30 mins after 5 unsuccessful attempts

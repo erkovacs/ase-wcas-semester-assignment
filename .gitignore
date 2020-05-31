@@ -1,2 +1,7 @@
+.vs/
+BikeStore/appsettings.json
+BikeStore/BikeStore.csproj.user
+BikeStore/.config/
 BikeStore/obj/
 BikeStore/bin/
+BikeStore/Properties/PublishProfiles/
